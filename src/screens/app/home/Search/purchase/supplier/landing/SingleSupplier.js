@@ -3,25 +3,28 @@ import { Text, StyleSheet, View, FlatList, Image ,TouchableOpacity} from 'react-
 import editImg from '../../../../../../../assets/images/edit.png';
 import fontsFamily from '../../../../../../../common/theme/fonts';
 import {useNavigation} from '@react-navigation/native'
+import globalStyle from '../../../../../../../common/styles/global';
 
 
-const SingleSupplier = ( ) => {
 
+
+const SingleSupplier = ({data}) => {
+    const {serial, accountName, address, mobileNo,partnerName} = data.item;
     const navigation = useNavigation()
 
     return (
-        <TouchableOpacity onPress={e => navigation.navigate("Supplier Details")}>
+        <TouchableOpacity onPress={e => navigation.navigate("Supplier Details",{data})}>
             <View style={style.singleSupplier}>
                 <View>
-                    <Text style={style.smallText}>01</Text>
-                    <Text style={style.supplierTxt}>Parvez Ahmed</Text>
-                    <Text style={style.smallText}>Uttara Dhaka 12</Text>
+                    <Text style={style.smallText}>{serial}</Text>
+                    <Text style={style.supplierTxt}>{partnerName}</Text>
+                    <Text style={style.smallText}>{address}</Text>
                 </View>
                 <View>
                     <Text style={style.smallText}>Mobile Number</Text>
-                    <Text style={style.supplierTxt}>01631838829</Text>
-                    <TouchableOpacity>
-                        <Image source={editImg} style={style.editIcon} />
+                    <Text style={style.supplierTxt}>{mobileNo}</Text>
+                    <TouchableOpacity onPress={e => navigation.navigate("Edit Supplier",{data})}>
+                        <Image source={editImg} style={globalStyle.editIcon} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -53,11 +56,5 @@ const style = StyleSheet.create({
         marginBottom: 5,
         fontFamily: fontsFamily.RUBIK_MEDIUM,
     },
-    editIcon: {
-        alignSelf: "flex-end",
-        width:30,
-        height:30
-        // width:
-    }
 
 })

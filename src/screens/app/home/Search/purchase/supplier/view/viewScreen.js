@@ -7,7 +7,8 @@ import ISeperator from '../../../../../../../common/components/ISeperator';
 
 
 
-const SupplierDetails = ({ navigation }) => {
+const SupplierDetails = ({route, navigation }) => {
+    const {partnerName, address, city, email, mobileNo, bankName, branchName, bankAccountTypeName, bankAccountNumber} = route.params.data.item;
 
     return (
         <>
@@ -22,13 +23,13 @@ const SupplierDetails = ({ navigation }) => {
 
                     <IDetails
                         label="Supplier Name"
-                        value="Lutfur Rahman"
+                        value={partnerName}
                         valueStyle={style.value}
                     />
 
                     <IDetails
                         label="Adress"
-                        value="21/1/1 Satish Sarker Road Uttara Dhaka 1216"
+                        value={address}
                         valueStyle={[style.value, { width: "60%" }]}
                     />
 
@@ -38,14 +39,14 @@ const SupplierDetails = ({ navigation }) => {
                         <Col>
                             <IDetails
                                 label="City"
-                                value="Dhaka"
+                                value={city}
                                 valueStyle={style.value}
                             />
                         </Col>
                         <Col>
                             <IDetails
                                 label="Email"
-                                value="enamul@gmail.com"
+                                value={email}
                                 valueStyle={style.value}
                             />
                         </Col>
@@ -53,7 +54,7 @@ const SupplierDetails = ({ navigation }) => {
 
                     <IDetails
                         label="Moile"
-                        value="01631838829"
+                        value={mobileNo}
                         valueStyle={style.value}
                     />
 
@@ -63,14 +64,14 @@ const SupplierDetails = ({ navigation }) => {
                         <Col>
                             <IDetails
                                 label="Bank Name"
-                                value="Agrani Bank LTD"
+                                value={bankName}
                                 valueStyle={style.value}
                             />
                         </Col>
                         <Col>
                             <IDetails
                                 label="Branch Name"
-                                value="Uttara Branch"
+                                value={branchName}
                                 valueStyle={style.value}
                             />
                         </Col>
@@ -80,14 +81,14 @@ const SupplierDetails = ({ navigation }) => {
                         <Col>
                             <IDetails
                                 label="Bank Account Type"
-                                value="Dhaka"
+                                value={bankAccountTypeName}
                                 valueStyle={style.value}
                             />
                         </Col>
                         <Col>
                             <IDetails
                                 label="Bank Account Number"
-                                value="1324265262525"
+                                value={bankAccountNumber}
                                 valueStyle={style.value}
                             />
                         </Col>
